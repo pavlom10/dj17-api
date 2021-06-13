@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from products import views
+from products.views import ProductViewSet
+from reviews.views import ReviewViewSet
 
 router = routers.DefaultRouter()
-router.register(r'products', views.ProductViewSet, basename='products')
+router.register(r'products', ProductViewSet, basename='products')
+router.register(r'product-reviews', ReviewViewSet, basename='reviews')
 
 urlpatterns = [
     path('api/v1/', include(router.urls)),
