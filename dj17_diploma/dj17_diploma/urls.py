@@ -18,10 +18,12 @@ from django.urls import path, include
 from rest_framework import routers
 from products.views import ProductViewSet
 from reviews.views import ReviewViewSet
+from orders.views import OrderViewSet
 
 router = routers.DefaultRouter()
 router.register(r'products', ProductViewSet, basename='products')
 router.register(r'product-reviews', ReviewViewSet, basename='reviews')
+router.register(r'orders', OrderViewSet, basename='orders')
 
 urlpatterns = [
     path('api/v1/', include(router.urls)),
