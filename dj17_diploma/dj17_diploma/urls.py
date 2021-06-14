@@ -19,11 +19,13 @@ from rest_framework import routers
 from products.views import ProductViewSet
 from reviews.views import ReviewViewSet
 from orders.views import OrderViewSet
+from collects.views import CollectionViewSet
 
 router = routers.DefaultRouter()
 router.register(r'products', ProductViewSet, basename='products')
 router.register(r'product-reviews', ReviewViewSet, basename='reviews')
 router.register(r'orders', OrderViewSet, basename='orders')
+router.register(r'product-collections', CollectionViewSet, basename='collections')
 
 urlpatterns = [
     path('api/v1/', include(router.urls)),
