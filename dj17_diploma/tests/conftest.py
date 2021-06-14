@@ -13,3 +13,9 @@ def product_factory():
     def factory(**kwargs):
         return baker.make('Product', **kwargs)
     return factory
+
+@pytest.fixture
+def order_factory():
+    def factory(**kwargs):
+        return baker.make('Order', **kwargs)
+    return factory

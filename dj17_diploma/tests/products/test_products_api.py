@@ -49,14 +49,17 @@ def test_product_filter(api_client, product_factory):
     resp = api_client.get(url, {'search': 'some product'})
     assert resp.status_code == status.HTTP_200_OK
     resp_json = resp.json()
-    assert len(resp_json) == 1 and resp_json[0]['name'] == 'Just some product'
+    assert len(resp_json) == 1
+    assert resp_json[0]['name'] == 'Just some product'
 
     resp = api_client.get(url, {'price_to': 200})
     assert resp.status_code == status.HTTP_200_OK
     resp_json = resp.json()
-    assert len(resp_json) == 1 and resp_json[0]['name'] == 'Just some product'
+    assert len(resp_json) == 1
+    assert resp_json[0]['name'] == 'Just some product'
 
     resp = api_client.get(url, {'price_from': 200, 'search': 'description'})
     assert resp.status_code == status.HTTP_200_OK
     resp_json = resp.json()
-    assert len(resp_json) == 1 and resp_json[0]['name'] == 'Another product'
+    assert len(resp_json) == 1
+    assert resp_json[0]['name'] == 'Another product'
