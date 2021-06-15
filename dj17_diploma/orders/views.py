@@ -2,7 +2,7 @@ from rest_framework import viewsets
 from rest_framework import permissions
 from .serializers import OrderSerializer
 from .models import Order
-# from .filters import ReviewFilter
+from .filters import OrderFilter
 
 
 class IsOwnerOrAdmin(permissions.BasePermission):
@@ -14,9 +14,9 @@ class IsOwnerOrAdmin(permissions.BasePermission):
 
 class OrderViewSet(viewsets.ModelViewSet):
     """ ViewSet для заказов """
-
+    queryset = Order.objects.all().prefetch_related('positions')
     serializer_class = OrderSerializer
-    # filterset_class = ReviewFilter
+    filterset_class = OrderFilter
 
     def get_queryset(self):
         """ Filter objects so a user only sees his own stuff. If user is admin, let him see all. """

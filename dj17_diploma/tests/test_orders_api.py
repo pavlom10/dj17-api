@@ -37,3 +37,17 @@ def test_get_orders_by_owner(api_client, order_factory, django_user_model):
     resp_json = resp.json()
     assert len(resp_json) == 1
     assert resp_json[0]['id'] == order2.id
+
+
+def test_update_order(api_client, order_factory, django_user_model, admin_user):
+
+    order = order_factory()
+    assert order.id
+    url = reverse('orders-detail', args=(order.id,))
+    resp = api_client.patch(url)
+    assert resp.status_code == status.HTTP_403_FORBIDDEN
+
+    api_client.force_login(admin_user)
+    resp = api_client.patch(url)
+    assert resp.status_code == status.HTTP_200_OK
+

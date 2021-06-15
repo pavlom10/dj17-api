@@ -24,6 +24,9 @@ class Order(models.Model):
         verbose_name = 'Order'
         verbose_name_plural = 'Orders'
 
+    def __str__(self):
+        return f'Order {self.id}'
+
 
 class OrderPositions(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)

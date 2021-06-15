@@ -3,5 +3,5 @@ from .models import Product
 
 
 @admin.register(Product)
-class ArticleAdmin(admin.ModelAdmin):
+class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'price', 'created_at')
