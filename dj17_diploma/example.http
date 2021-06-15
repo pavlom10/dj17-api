@@ -1,0 +1,21 @@
+# примеры API-запросов
+
+# получение товаров
+GET localhost:8000/api/v1/products/
+Content-Type: application/json
+
+# карточка товара
+GET localhost:8000/api/v1/products/1/
+Content-Type: application/json
+
+# получение отзывов
+GET localhost:8000/api/v1/product-reviews/
+Content-Type: application/json
+
+# заказы (для админов)
+GET localhost:8000/api/v1/orders/
+Content-Type: application/json
+
+# подборки
+GET localhost:8000/api/v1/product-collections/
+Content-Type: application/json
