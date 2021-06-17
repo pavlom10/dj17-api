@@ -34,9 +34,9 @@ def test_add_product(api_client, admin_user):
         'price': 100
     }
     resp = api_client.post(url, product_payload)
-    assert resp.status_code == status.HTTP_403_FORBIDDEN
+    assert resp.status_code == status.HTTP_401_UNAUTHORIZED
 
-    api_client.force_login(admin_user)
+    api_client.force_authenticate(admin_user)
     resp = api_client.post(url, product_payload)
     assert resp.status_code == status.HTTP_201_CREATED
 

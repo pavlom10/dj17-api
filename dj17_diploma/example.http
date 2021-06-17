@@ -8,9 +8,9 @@ Content-Type: application/json
 POST localhost:8000/api/v1/products/
 Content-Type: application/json
 {
-    'name': 'Some product',
-    'description': 'Awesome product',
-    'price': 100
+    "name": "Some product",
+    "description": "Awesome product",
+    "price": 100
 }
 
 # карточка товара
@@ -25,15 +25,23 @@ Content-Type: application/json
 POST localhost:8000/api/v1/product-reviews/
 Content-Type: application/json
 {
-    'user': 2,
-    'product': 1,
-    'text': 'Awesome product',
-    'mark': 4
+    "user": 2,
+    "product": 1,
+    "text": "Awesome product",
+    "mark": 4
 }
 
 # заказы
 GET localhost:8000/api/v1/orders/
 Content-Type: application/json
+
+# новый заказ
+POST localhost:8000/api/v1/product-reviews/
+Content-Type: application/json
+{
+    "user": 2,
+    "products":[ {"product": 2, "quantity": 5 } ]
+}
 
 # подборки
 GET localhost:8000/api/v1/product-collections/

@@ -18,10 +18,10 @@ def test_add_review(api_client, django_user_model, product_factory):
 
     url = reverse('reviews-list')
     resp = api_client.post(url, review_payload)
-    assert resp.status_code == status.HTTP_403_FORBIDDEN
+    assert resp.status_code == status.HTTP_401_UNAUTHORIZED
 
     user = django_user_model.objects.create_user(username='user1', password='bar')
-    api_client.force_login(user)
+    api_client.force_authenticate(user)
     review_payload['author'] = user.id
     resp = api_client.post(url, review_payload)
     assert resp.status_code == status.HTTP_201_CREATED
@@ -30,7 +30,7 @@ def test_add_review(api_client, django_user_model, product_factory):
 def test_unique_review(api_client, django_user_model, product_factory):
     product = product_factory(name='Just some product')
     user = django_user_model.objects.create_user(username='user1', password='bar')
-    api_client.force_login(user)
+    api_client.force_authenticate(user)
     review_payload = {
         'author': user.id,
         'product': product.id,
