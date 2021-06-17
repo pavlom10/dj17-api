@@ -44,10 +44,10 @@ def test_update_order(api_client, order_factory, django_user_model, admin_user):
     order = order_factory()
     assert order.id
     url = reverse('orders-detail', args=(order.id,))
-    resp = api_client.patch(url)
+    resp = api_client.patch(url, {status: OrderStatusChoices.DONE})
     assert resp.status_code == status.HTTP_403_FORBIDDEN
 
     api_client.force_login(admin_user)
-    resp = api_client.patch(url)
+    resp = api_client.patch(url, {status: OrderStatusChoices.DONE})
     assert resp.status_code == status.HTTP_200_OK
 

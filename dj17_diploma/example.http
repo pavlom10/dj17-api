@@ -1,8 +1,17 @@
 # примеры API-запросов
 
-# получение товаров
+# получение списка товаров
 GET localhost:8000/api/v1/products/
 Content-Type: application/json
+
+# добавление товара
+POST localhost:8000/api/v1/products/
+Content-Type: application/json
+{
+    'name': 'Some product',
+    'description': 'Awesome product',
+    'price': 100
+}
 
 # карточка товара
 GET localhost:8000/api/v1/products/1/
@@ -12,7 +21,17 @@ Content-Type: application/json
 GET localhost:8000/api/v1/product-reviews/
 Content-Type: application/json
 
-# заказы (для админов)
+# новый отзыв
+POST localhost:8000/api/v1/product-reviews/
+Content-Type: application/json
+{
+    'user': 2,
+    'product': 1,
+    'text': 'Awesome product',
+    'mark': 4
+}
+
+# заказы
 GET localhost:8000/api/v1/orders/
 Content-Type: application/json
 
